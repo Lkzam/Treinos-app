@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Exclusão - {{ aluno_nome }}{% endblock %}
+
+{% block content %}
+    <h1>Confirmar Exclusão</h1>
+    <p>Tem certeza de que deseja excluir o treino "{{ treino[1] }}"?</p>
+    <form action="{{ url_for('professor.excluir_treino_confirmado', treino_id=treino[0], aluno_id=aluno_id) }}" method="post">
+        <button type="submit">Confirmar</button>
+        <a href="{{ url_for('professor.treinos_aluno', aluno_id=aluno_id) }}">
+            <button type="button">Cancelar</button>
+        </a>
+    </form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Registro de Aluno{% endblock %}
+
+{% block content %}
+    <h2>Cadastro de Aluno</h2>
+    
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    <form action="{{ url_for('registro.registrar') }}" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <a href="{{ url_for('registro_professor.registrar_professor') }}">
+        <button>Sou Professor</button>
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('login.login') }}">Já tem uma conta? Faça login</a>
+{% endblock %}

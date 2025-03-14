@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Treinos</title>
+</head>
+<body>
+    <h1>Lista de Treinos</h1>
+    <ul>
+        {% for treino in treinos %}
+            <li>{{ treino.nome }} - Aluno ID: {{ treino.aluno_id }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('criar_treino') }}">Criar Novo Treino</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home do Aluno{% endblock %}
+
+{% block content %}
+   
+        <h1>Bem-vindo, {{ session['usuario_nome'] }}!</h1>
+
+        {% if treinos %}
+            <h2>Seus Treinos:</h2>
+            <ul class="treinos-list">
+                {% for treino in treinos %}
+                    <li class="treino-item">
+                        <strong>{{ treino.nome }}</strong><br>
+                        {{ treino.descricao }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="mensagem">Você não tem treinos disponíveis ainda.</p>
+        {% endif %}
+   
+{% endblock %}

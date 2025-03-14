@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Login de Professor{% endblock %}
+
+{% block content %}
+   
+        <h2>Login de Professor</h2>
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        
+        <p>Não tem uma conta? <a href="{{ url_for('registro_professor.registrar_professor') }}">Registre-se como Professor</a></p>
+    
+{% endblock %}

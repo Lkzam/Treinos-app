@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Aluno{% endblock %}
+
+{% block content %}
+    <h1>Adicionar Aluno</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    {% if success %}
+        <p style="color: green;">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="email">Email do Aluno:</label>
+        <input type="email" name="email" required>
+
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('professor.home_professor') }}">
+        <button>Voltar para a Home</button>
+    </a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Home do Professor{% endblock %}
+
+{% block content %}
+    <h1>Bem-vindo, {{ session['professor_nome'] }}!</h1>
+
+    <h2>Alunos Associados:</h2>
+    {% if total_alunos > 0 %}
+        <ul>
+            {% for aluno in alunos %}
+                <li>
+                    {{ aluno[1] }} ({{ aluno[2] }}) <!-- Nome e e-mail do aluno -->
+                    <a href="{{ url_for('professor.treinos_aluno', aluno_id=aluno[0]) }}">Ver Treinos</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Você ainda não tem alunos associados.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('professor.adicionar_aluno') }}">
+        <button>Adicionar Aluno</button>
+    </a>
+
+    <a href="{{ url_for('professor.sair') }}">Sair</a>
+{% endblock %}

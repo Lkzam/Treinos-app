@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Treino - {{ treino[1] }}{% endblock %}
+
+{% block content %}
+    <h1>Editar Treino</h1>
+    <form action="{{ url_for('professor.editar_treino', treino_id=treino[0]) }}" method="post">
+        <input type="hidden" name="aluno_id" value="{{ aluno_id }}">
+    
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome_treino" value="{{ treino[1] }}" required>
+        <br>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao_treino" required>{{ treino[2] }}</textarea>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+    
+    <br>
+    <a href="{{ url_for('professor.treinos_aluno', aluno_id=aluno_id) }}">
+        <button>Voltar</button>
+    </a>
+{% endblock %}

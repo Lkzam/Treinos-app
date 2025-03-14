@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Treinos do Aluno - {{ aluno_nome }}{% endblock %}
+
+{% block content %}
+    <h1>Treinos de {{ aluno_nome }}</h1>
+
+    <h2>Treinos Cadastrados</h2>
+    <ul>
+        {% for treino in treinos %}
+            <li>{{ treino[1] }} - {{ treino[2] }}
+                <a href="{{ url_for('professor.editar_treino', treino_id=treino[0], aluno_id=aluno_id) }}">
+                    <button>Editar</button>
+                </a>
+                <a href="{{ url_for('professor.confirmar_exclusao', treino_id=treino[0], aluno_id=aluno_id) }}">
+                    <button>Excluir</button>
+                </a>
+            </li>
+        {% else %}
+            <p>Nenhum treino encontrado para este aluno.</p>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="{{ url_for('professor.criar_treino', aluno_id=aluno_id) }}">
+        <button>Criar Novo Treino</button>
+    </a>
+    <br>
+    <a href="{{ url_for('professor.home_professor') }}">
+        <button>Voltar para Home</button>
+    </a>
+
+{% endblock %}

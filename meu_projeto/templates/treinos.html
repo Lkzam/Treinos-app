@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Treinos do Aluno{% endblock %}
+
+{% block content %}
+    <h2>Treinos do Aluno</h2>
+
+    {% if treinos %}
+        <ul>
+            {% for treino in treinos %}
+                <li>
+                    <strong>{{ treino.nome }}</strong> - {{ treino.descricao }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Este aluno ainda não tem treinos disponíveis.</p>
+    {% endif %}
+
+    <a href="{{ url_for('professor.home_professor') }}">Voltar</a>
+{% endblock %}

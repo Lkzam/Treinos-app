@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Alunos</title>
+</head>
+<body>
+    <h2>Meus Alunos</h2>
+
+    {% if alunos %}
+        <ul>
+            {% for aluno in alunos %}
+                <li>{{ aluno[1] }} ({{ aluno[2] }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Você ainda não tem alunos.</p>
+    {% endif %}
+
+    <h3>Adicionar Aluno</h3>
+    <form action="{{ url_for('professor.adicionar_aluno') }}" method="POST">
+        <label for="email_aluno">Email do Aluno:</label>
+        <input type="email" name="email_aluno" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('login.logout') }}">Sair</a>
+</body>
+</html>
